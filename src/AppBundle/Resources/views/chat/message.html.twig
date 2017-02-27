@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="prout">
+            <table>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.message }}</td>
+                        <td>{{ item.time }}</td>
+                    </tr>
+                {% else %}
+                    yenapas
+                {% endfor %}
+            </table>
+        </div>
+        <form>
+            <input type="text" name="name">
+            <input type="text" name="message">
+            <input type="text" name="time">
+            <button type="submit">Send</button>
+        </form>
+    </body>
+</html>
