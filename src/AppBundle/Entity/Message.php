@@ -36,19 +36,16 @@ class Message
     private $message;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="yoloo", type="string", length=255)
-     */
-    private $yoloo;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="inserted_at", type="datetime")
      */
     private $insertedAt;
 
+    public function __construct()
+    {
+        $this->insertedAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -130,29 +127,5 @@ class Message
     public function getInsertedAt()
     {
         return $this->insertedAt;
-    }
-
-    /**
-     * Set yoloo
-     *
-     * @param string $yoloo
-     *
-     * @return Message
-     */
-    public function setYoloo($yoloo)
-    {
-        $this->yoloo = $yoloo;
-
-        return $this;
-    }
-
-    /**
-     * Get yoloo
-     *
-     * @return string
-     */
-    public function getYoloo()
-    {
-        return $this->yoloo;
     }
 }

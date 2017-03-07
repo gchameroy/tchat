@@ -22,20 +22,12 @@ class DefaultController extends Controller
      */
     public function messageAction()
     {
-        $items = [];
-        $item = new \stdClass();
-        $item->name = "Moi";
-        $item->message = "Prout";
-        $item->time = "12:00";
-        $items[] = $item;
-        $item = new \stdClass();
-        $item->name = "Toi";
-        $item->message = "Prout aussi";
-        $item->time = "12:01";
-        $items[] = $item;
+        $messages = $this->getDoctrine()
+            ->getRepository('AppBundle:Message')
+            ->findAll();
 
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:chat:message.html.twig',
-        ['items' => $items]);
+        return $this->render('AppBundle:chat:message.html.twig', [
+            'messages' => $messages
+        ]);
     }
 }

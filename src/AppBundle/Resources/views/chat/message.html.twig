@@ -6,11 +6,11 @@
     <body>
         <div id="prout">
             <table>
-                {% for item in items %}
+                {% for message in messages %}
                     <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.message }}</td>
-                        <td>{{ item.time }}</td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.message }}</td>
+                        <td>{{ message.insertedAt|date("d/m/Y H:i:s") }}</td>
                     </tr>
                 {% else %}
                     yenapas
