@@ -17,11 +17,6 @@
                 {% endfor %}
             </table>
         </div>
-        <form>
-            <input type="text" name="name">
-            <input type="text" name="message">
-            <input type="text" name="time">
-            <button type="submit">Send</button>
-        </form>
+        {{ render(controller('AppBundle:Default:add')) }}
     </body>
 </html>
