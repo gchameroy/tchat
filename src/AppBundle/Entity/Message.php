@@ -25,21 +25,19 @@ class Message
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(max=20)
-     * @Assert\Length(min=3)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="message", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(max=255)
      */
     private $message;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @Assert\NotNull()
+     */
+    private $user;
 
     /**
      * @var \DateTime
@@ -48,9 +46,10 @@ class Message
      */
     private $insertedAt;
 
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->insertedAt = new \DateTime();
+        $this->user = $user;
     }
 
     /**
@@ -61,30 +60,6 @@ class Message
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Message
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -133,5 +108,29 @@ class Message
     public function getInsertedAt()
     {
         return $this->insertedAt;
+    }
+
+    /**
+     * Set User
+     *
+     * @param User $user
+     *
+     * @return Message
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get User
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

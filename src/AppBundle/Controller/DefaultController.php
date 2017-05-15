@@ -29,7 +29,7 @@ class DefaultController extends Controller
      */
     public function addAction(Request $request)
     {
-        $message = new Message();
+        $message = new Message($this->getUser());
 
         $form = $this->createForm(MessageType::class, $message, array(
             'action' => $this->generateUrl('add_message')

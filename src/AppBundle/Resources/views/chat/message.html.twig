@@ -6,9 +6,11 @@
     <body>
         <div id="prout">
             <table>
+                <span><a href="{{ path('logout') }}">Logout</a></span>
+
                 {% for message in messages %}
                     <tr>
-                        <td>{{ message.name }}</td>
+                        <td>{{ message.user.username }}</td>
                         <td>{{ message.message }}</td>
                         <td>{{ message.insertedAt|date("d/m/Y H:i:s") }}</td>
                     </tr>
